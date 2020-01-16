@@ -1,0 +1,25 @@
+{
+  "name": "react-native-amplitude",
+  "version": "1.0.0",
+  "description": "React native module for amplitude anlytics",
+  "files": [
+    "android",
+    "ios",
+    "index.js",
+    "react-native-amplitude.podspec"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Travancore-Analytics/react-native-amplitude.git"
+  },
+  "author": "Travancore Analytics",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Travancore-Analytics/react-native-amplitude.git/issues"
+  },
+  "homepage": "https://github.com/Travancore-Analytics/react-native-amplitude.git#readme"
+}
