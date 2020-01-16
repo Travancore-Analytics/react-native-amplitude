@@ -15,4 +15,5 @@ Pod::Spec.new do |s|
   s.source       = { :git => "git+https://github.com/Travancore-Analytics/react-native-amplitude.git", :tag => "v#{s.version}" }
   s.source_files  = "ios/**/*.{h,m}"
   s.dependency 'React'
+  s.dependency 'Amplitude-iOS', '4.0.4'
 end
