@@ -48,9 +48,5 @@ RCT_EXPORT_METHOD(logEvent:(NSString *) eventName params:(NSDictionary *)params)
     return @[];
 }
 
-- (NSDictionary *)constantsToExport
-{
-    return @{  };
-}
 
 @end
