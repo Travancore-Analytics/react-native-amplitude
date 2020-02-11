@@ -36,10 +36,8 @@ RCT_EXPORT_MODULE();
 // Export methods to a native module
 // https://facebook.github.io/react-native/docs/native-modules-ios.html
 
-RCT_EXPORT_METHOD(initialize:(NSString *)apiKey rhbName:(NSString *)rhbName){
+RCT_EXPORT_METHOD(initialize:(NSString *)apiKey){
     [[Amplitude instance] initializeApiKey:apiKey];
-    AMPIdentify *identify = [[AMPIdentify identify] setOnce:@"RHB_Name" value:rhbName];
-    [[Amplitude instance] identify:identify];
 }
 
 RCT_EXPORT_METHOD(logEvent:(NSString *) eventName params:(NSDictionary *)params){
