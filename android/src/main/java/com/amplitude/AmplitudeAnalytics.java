@@ -5,6 +5,8 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
+import com.amplitude.api.Identify;
+import com.amplitude.api.Amplitude;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,9 +20,11 @@ public class AmplitudeAnalytics extends ReactContextBaseJavaModule  {
     }
 
 
-    @ReactMethod void initialize(String apiKey){
-        com.amplitude.api.Amplitude.getInstance().initialize(getReactApplicationContext().getApplicationContext(), apiKey)
+    @ReactMethod void initialize(String apiKey, String rhbName){
+        Amplitude.getInstance().initialize(getReactApplicationContext().getApplicationContext(), apiKey)
                 .enableForegroundTracking(getCurrentActivity().getApplication());
+        Identify identify = new Identify().setOnce("RHB_Name", rhbName);
+        Amplitude.getInstance().identify(identify);
     }
 
     @ReactMethod
