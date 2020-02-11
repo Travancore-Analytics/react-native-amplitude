@@ -1,6 +1,8 @@
 package com.amplitude;
 
 
+import com.amplitude.api.Amplitude;
+import com.amplitude.api.Identify;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -19,8 +21,13 @@ public class AmplitudeAnalytics extends ReactContextBaseJavaModule  {
 
 
     @ReactMethod void initialize(String apiKey){
-        com.amplitude.api.Amplitude.getInstance().initialize(getReactApplicationContext().getApplicationContext(), apiKey)
+        Amplitude.getInstance().initialize(getReactApplicationContext().getApplicationContext(), apiKey)
                 .enableForegroundTracking(getCurrentActivity().getApplication());
+    }
+
+    @ReactMethod void setUserPropertyForOnce(String key, String value){
+        Identify identify = new Identify().setOnce(key, value);
+        Amplitude.getInstance().identify(identify);
     }
 
     @ReactMethod
