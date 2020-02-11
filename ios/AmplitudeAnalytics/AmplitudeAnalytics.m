@@ -40,6 +40,11 @@ RCT_EXPORT_METHOD(initialize:(NSString *)apiKey){
     [[Amplitude instance] initializeApiKey:apiKey];
 }
 
+RCT_EXPORT_METHOD(setUserPropertyForOnce:(NSString *)key value:(NSString *)value){
+    AMPIdentify *identify = [[AMPIdentify identify] setOnce:key value:value];
+    [[Amplitude instance] identify:identify];
+}
+
 RCT_EXPORT_METHOD(logEvent:(NSString *) eventName params:(NSDictionary *)params){
     [[Amplitude instance] logEvent:eventName withEventProperties:params];
 }
