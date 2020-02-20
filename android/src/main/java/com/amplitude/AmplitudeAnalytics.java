@@ -30,6 +30,11 @@ public class AmplitudeAnalytics extends ReactContextBaseJavaModule  {
         Amplitude.getInstance().identify(identify);
     }
 
+    @ReactMethod void unSetUserProperty(String key){
+        Identify identify = new Identify().unset(key);
+        Amplitude.getInstance().identify(identify);
+    }
+
     @ReactMethod
     public void logEvent(String eventName, ReadableMap parameters) throws JSONException {
 
