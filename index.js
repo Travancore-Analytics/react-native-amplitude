@@ -9,6 +9,9 @@ export default {
   setUserPropertyForOnce(key,value){
     return AmplitudeAnalytics.setUserPropertyForOnce(key,value);
   },
+  unSetUserProperty(key){
+    return AmplitudeAnalytics.unSetUserProperty(key);
+  },
   logEvent(eventName,parameters) {
     return AmplitudeAnalytics.logEvent(eventName,parameters);
   }
