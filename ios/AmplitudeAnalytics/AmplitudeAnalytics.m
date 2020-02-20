@@ -45,6 +45,11 @@ RCT_EXPORT_METHOD(setUserPropertyForOnce:(NSString *)key value:(NSString *)value
     [[Amplitude instance] identify:identify];
 }
 
+RCT_EXPORT_METHOD(unSetUserProperty:(NSString *)key){
+    AMPIdentify *identify = [[AMPIdentify identify] unset:key];
+    [[Amplitude instance] identify:identify];
+}
+
 RCT_EXPORT_METHOD(logEvent:(NSString *) eventName params:(NSDictionary *)params){
     [[Amplitude instance] logEvent:eventName withEventProperties:params];
 }
