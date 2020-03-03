@@ -3,6 +3,7 @@ package com.amplitude;
 
 import com.amplitude.api.Amplitude;
 import com.amplitude.api.Identify;
+import com.amplitude.api.TrackingOptions;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -23,6 +24,11 @@ public class AmplitudeAnalytics extends ReactContextBaseJavaModule  {
     @ReactMethod void initialize(String apiKey){
         Amplitude.getInstance().initialize(getReactApplicationContext().getApplicationContext(), apiKey)
                 .enableForegroundTracking(getCurrentActivity().getApplication());
+    }
+
+    @ReactMethod void disableTrackingOptions() {
+        TrackingOptions options = new TrackingOptions().disableCity().disableCountry().disableLatLng().disableRegion().disableDeviceManufacturer().disableDeviceModel().disableDeviceBrand();
+        Amplitude.getInstance().setTrackingOptions(options);
     }
 
     @ReactMethod void setUserPropertyForOnce(String key, String value){
