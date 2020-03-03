@@ -20,6 +20,7 @@
 #import “React/RCTEventDispatcher.h” // Required when used as a Pod in a Swift project
 #endif
 #import "Amplitude.h"
+#import "AMPTrackingOptions.h"
 
 @interface AmplitudeAnalytics ()
 {
@@ -38,6 +39,11 @@ RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(initialize:(NSString *)apiKey){
     [[Amplitude instance] initializeApiKey:apiKey];
+}
+
+RCT_EXPORT_METHOD(disableTrackingOptions){
+    AMPTrackingOptions *options = [[[[[[[AMPTrackingOptions options] disableCity] disableCountry] disableLatLng] disableRegion] disableDeviceManufacturer] disableDeviceModel];
+    [[Amplitude instance] setTrackingOptions:options];
 }
 
 RCT_EXPORT_METHOD(setUserPropertyForOnce:(NSString *)key value:(NSString *)value){
