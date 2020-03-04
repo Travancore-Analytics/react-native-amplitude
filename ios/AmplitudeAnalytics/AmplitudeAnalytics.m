@@ -41,9 +41,57 @@ RCT_EXPORT_METHOD(initialize:(NSString *)apiKey){
     [[Amplitude instance] initializeApiKey:apiKey];
 }
 
-RCT_EXPORT_METHOD(disableTrackingOptions){
-    AMPTrackingOptions *options = [[[[[[[AMPTrackingOptions options] disableCity] disableCountry] disableLatLng] disableRegion] disableDeviceManufacturer] disableDeviceModel];
-    [[Amplitude instance] setTrackingOptions:options];
+RCT_EXPORT_METHOD(disableTrackingOptions:(NSArray *)options){
+    AMPTrackingOptions *trackingOptions = [AMPTrackingOptions options];
+    if([options containsObject:@"disableCarrier"]){
+        [trackingOptions disableCarrier];
+    }
+    if([options containsObject:@"disableCity"]){
+        [trackingOptions disableCity];
+    }
+    if([options containsObject:@"disableCountry"]){
+        [trackingOptions disableCountry];
+    }
+    if([options containsObject:@"disableDeviceManufacturer"]){
+        [trackingOptions disableDeviceManufacturer];
+    }
+    if([options containsObject:@"disableDeviceModel"]){
+        [trackingOptions disableDeviceModel];
+    }
+    if([options containsObject:@"disableDMA"]){
+        [trackingOptions disableDMA];
+    }
+    if([options containsObject:@"disableIDFA"]){
+        [trackingOptions disableIDFA];
+    }
+    if([options containsObject:@"disableIDFV"]){
+        [trackingOptions disableIDFV];
+    }
+    if([options containsObject:@"disableIPAddress"]){
+        [trackingOptions disableIPAddress];
+    }
+    if([options containsObject:@"disableLanguage"]){
+        [trackingOptions disableLanguage];
+    }
+    if([options containsObject:@"disableLatLng"]){
+        [trackingOptions disableLatLng];
+    }
+    if([options containsObject:@"disableOSName"]){
+        [trackingOptions disableOSName];
+    }
+    if([options containsObject:@"disableOSVersion"]){
+        [trackingOptions disableOSVersion];
+    }
+    if([options containsObject:@"disablePlatform"]){
+        [trackingOptions disablePlatform];
+    }
+    if([options containsObject:@"disableRegion"]){
+        [trackingOptions disableOSVersion];
+    }
+    if([options containsObject:@"disableVersionName"]){
+        [trackingOptions disablePlatform];
+    }
+    [[Amplitude instance] setTrackingOptions:trackingOptions];
 }
 
 RCT_EXPORT_METHOD(setUserPropertyForOnce:(NSString *)key value:(NSString *)value){
