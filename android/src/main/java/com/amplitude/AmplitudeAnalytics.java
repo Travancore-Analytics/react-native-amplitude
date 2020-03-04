@@ -7,10 +7,13 @@ import com.amplitude.api.TrackingOptions;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class AmplitudeAnalytics extends ReactContextBaseJavaModule  {
 
@@ -26,9 +29,58 @@ public class AmplitudeAnalytics extends ReactContextBaseJavaModule  {
                 .enableForegroundTracking(getCurrentActivity().getApplication());
     }
 
-    @ReactMethod void disableTrackingOptions() {
-        TrackingOptions options = new TrackingOptions().disableCity().disableCountry().disableLatLng().disableRegion().disableDeviceManufacturer().disableDeviceModel().disableDeviceBrand();
-        Amplitude.getInstance().setTrackingOptions(options);
+    @ReactMethod void disableTrackingOptions(ReadableArray options) {
+        TrackingOptions trackingOptions = new TrackingOptions();
+        ArrayList optionsList = options.toArrayList();
+        if (optionsList.contains("disableAdid")){
+            trackingOptions.disableAdid();
+        }
+        if (optionsList.contains("disableCarrier")){
+            trackingOptions.disableCarrier();
+        }
+        if (optionsList.contains("disableCity")){
+            trackingOptions.disableCity();
+        }
+        if (optionsList.contains("disableCountry")){
+            trackingOptions.disableCountry();
+        }
+        if (optionsList.contains("disableDeviceBrand")){
+            trackingOptions.disableDeviceBrand();
+        }
+        if (optionsList.contains("disableDeviceManufacturer")){
+            trackingOptions.disableDeviceManufacturer();
+        }
+        if (optionsList.contains("disableDeviceModel")){
+            trackingOptions.disableDeviceModel();
+        }
+        if (optionsList.contains("disableDMA")){
+            trackingOptions.disableDma();
+        }
+        if (optionsList.contains("disableIPAddress")){
+            trackingOptions.disableIpAddress();
+        }
+        if (optionsList.contains("disableLanguage")){
+            trackingOptions.disableLanguage();
+        }
+        if (optionsList.contains("disableLatLng")){
+            trackingOptions.disableLatLng();
+        }
+        if (optionsList.contains("disableOSName")){
+            trackingOptions.disableOsName();
+        }
+        if (optionsList.contains("disableOSVersion")){
+            trackingOptions.disableOsVersion();
+        }
+        if (optionsList.contains("disablePlatform")){
+            trackingOptions.disablePlatform();
+        }
+        if (optionsList.contains("disableRegion")){
+            trackingOptions.disableRegion();
+        }
+        if (optionsList.contains("disableVersionName")){
+            trackingOptions.disableVersionName();
+        }
+        Amplitude.getInstance().setTrackingOptions(trackingOptions);
     }
 
     @ReactMethod void setUserPropertyForOnce(String key, String value){
