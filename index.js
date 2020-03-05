@@ -9,8 +9,8 @@ export default {
   setUserPropertyForOnce(key,value){
     return AmplitudeAnalytics.setUserPropertyForOnce(key,value);
   },
-  disableTrackingOptions(disableOptions = []){
-    return AmplitudeAnalytics.disableTrackingOptions(disableOptions);
+  setTrackingOptions(trackingOptions = []){
+    return AmplitudeAnalytics.setTrackingOptions(trackingOptions);
   },
   unSetUserProperty(key){
     return AmplitudeAnalytics.unSetUserProperty(key);

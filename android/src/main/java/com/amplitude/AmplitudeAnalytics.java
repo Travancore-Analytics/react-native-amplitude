@@ -29,7 +29,7 @@ public class AmplitudeAnalytics extends ReactContextBaseJavaModule  {
                 .enableForegroundTracking(getCurrentActivity().getApplication());
     }
 
-    @ReactMethod void disableTrackingOptions(ReadableArray options) {
+    @ReactMethod void setTrackingOptions(ReadableArray options) {
         TrackingOptions trackingOptions = new TrackingOptions();
         ArrayList optionsList = options.toArrayList();
         if (optionsList.contains("disableAdid")){

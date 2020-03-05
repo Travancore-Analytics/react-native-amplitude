@@ -41,7 +41,7 @@ RCT_EXPORT_METHOD(initialize:(NSString *)apiKey){
     [[Amplitude instance] initializeApiKey:apiKey];
 }
 
-RCT_EXPORT_METHOD(disableTrackingOptions:(NSArray *)options){
+RCT_EXPORT_METHOD(setTrackingOptions:(NSArray *)options){
     AMPTrackingOptions *trackingOptions = [AMPTrackingOptions options];
     if([options containsObject:@"disableCarrier"]){
         [trackingOptions disableCarrier];
