@@ -15,6 +15,9 @@ export default {
   unSetUserProperty(key){
     return AmplitudeAnalytics.unSetUserProperty(key);
   },
+  setDeviceId(deviceId){
+    return AmplitudeAnalytics.setDeviceId(deviceId);
+  },
   logEvent(eventName,parameters) {
     return AmplitudeAnalytics.logEvent(eventName,parameters);
   },
