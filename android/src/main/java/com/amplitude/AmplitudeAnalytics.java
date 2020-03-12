@@ -93,6 +93,10 @@ public class AmplitudeAnalytics extends ReactContextBaseJavaModule  {
         Amplitude.getInstance().identify(identify);
     }
 
+    @ReactMethod void setDeviceId(String deviceId){
+        Amplitude.getInstance().setDeviceId(deviceId);
+    }
+
     @ReactMethod
     public void logEvent(String eventName, ReadableMap parameters) throws JSONException {
 

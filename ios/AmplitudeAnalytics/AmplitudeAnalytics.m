@@ -104,6 +104,10 @@ RCT_EXPORT_METHOD(unSetUserProperty:(NSString *)key){
     [[Amplitude instance] identify:identify];
 }
 
+RCT_EXPORT_METHOD(setDeviceId:(NSString *)deviceId){
+    [[Amplitude instance] setDeviceId:deviceId];
+}
+
 RCT_EXPORT_METHOD(logEvent:(NSString *) eventName params:(NSDictionary *)params){
     [[Amplitude instance] logEvent:eventName withEventProperties:params];
 }
