@@ -25,8 +25,10 @@ public class AmplitudeAnalytics extends ReactContextBaseJavaModule  {
 
 
     @ReactMethod void initialize(String apiKey){
-        Amplitude.getInstance().initialize(getReactApplicationContext().getApplicationContext(), apiKey)
-                .enableForegroundTracking(getCurrentActivity().getApplication());
+        if(getReactApplicationContext() != null && getReactApplicationContext().getApplicationContext() != null ) {
+            Amplitude.getInstance().initialize(getReactApplicationContext().getApplicationContext(), apiKey)
+                    .enableForegroundTracking(getCurrentActivity().getApplication());
+        }
     }
 
     @ReactMethod void setTrackingOptions(ReadableArray options) {
