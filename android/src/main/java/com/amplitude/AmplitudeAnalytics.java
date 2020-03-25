@@ -1,6 +1,8 @@
 package com.amplitude;
 
 
+import android.app.Activity;
+
 import com.amplitude.api.Amplitude;
 import com.amplitude.api.Identify;
 import com.amplitude.api.TrackingOptions;
@@ -25,8 +27,12 @@ public class AmplitudeAnalytics extends ReactContextBaseJavaModule  {
 
 
     @ReactMethod void initialize(String apiKey){
-        Amplitude.getInstance().initialize(getReactApplicationContext().getApplicationContext(), apiKey)
-                .enableForegroundTracking(getCurrentActivity().getApplication());
+        Activity activity = getCurrentActivity();
+        if(activity != null) {
+            Amplitude.getInstance()
+                    .initialize(activity.getApplicationContext(), apiKey)
+                    .enableForegroundTracking(activity.getApplication());
+        }
     }
 
     @ReactMethod void setTrackingOptions(ReadableArray options) {

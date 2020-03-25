@@ -1,6 +1,6 @@
 {
   "name": "react-native-amplitude-lite",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "React native module for amplitude anlytics",
   "files": [
     "android",
